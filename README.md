@@ -1,2 +1,2 @@
-# hydra-triage-ic-shell
-Triage test: issue_comment + shell (exploitable)
+# Triage Test: IC + shell
+Test repo for pipeline validation.
