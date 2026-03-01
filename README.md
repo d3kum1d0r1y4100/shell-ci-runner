@@ -1,2 +1,2 @@
-# Triage Test: IC + shell
-Test repo for pipeline validation.
+# Shell CI Runner
+Shell CI test harness.
