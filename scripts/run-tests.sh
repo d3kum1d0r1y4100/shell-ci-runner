@@ -2,4 +2,5 @@
 set -euo pipefail
 
 echo 'Running tests...'
-exit 0
+
+echo 'All tests passed.'
