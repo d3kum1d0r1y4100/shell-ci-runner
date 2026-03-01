@@ -1,17 +1,21 @@
 name: PR Tests
 on:
+  pull_request:
+    branches: [main]
   issue_comment:
     types: [created]
 
 jobs:
   test:
-    if: contains(github.event.comment.body, '/test')
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/test'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
         uses: actions/checkout@v4
         with:
-          ref: refs/pull/${{ github.event.issue.number }}/head
+          ref: ${{ github.event_name == 'pull_request' && github.ref || format('refs/pull/{0}/head', github.event.issue.number) }}
       - name: Run tests
         run: bash scripts/run-tests.sh
         env:
